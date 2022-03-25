@@ -6,26 +6,25 @@ export function valida(input) {
 }
 
 const validadores = {
-    nacimiento: input => validarNacimiento(input)
-}
+    nacimiento: (input) => validarNacimiento(input),
+};
 
 function validarNacimiento(input) {
     const fechaCliente = new Date(input.value);
-    let mensaje = '';
+    let mensaje = "";
     if (!mayorDeEdad(fechaCliente)) {
-        mensaje = 'Debes tener al menos 18 años de edad';
+        mensaje = "Debes tener al menos 18 años de edad";
     }
 
     input.setCustomValidity(mensaje);
 }
 
 function mayorDeEdad(fecha) {
-    const fechaHoy = new Date();
-    const diferenciasFechas = new Date(
+    const fechaActual = new Date();
+    const diferenciaFechas = new Date(
         fecha.getUTCFullYear() + 18,
         fecha.getUTCMonth(),
         fecha.getUTCDate()
     );
-
-    return fechaHoy >= diferenciasFechas;
+    return diferenciaFechas <= fechaActual;
 }
