@@ -1,4 +1,4 @@
-import { valida } from "./validations ";
+import { valida } from "./validations.js";
 
 const inputs = document.querySelectorAll('input');
 
