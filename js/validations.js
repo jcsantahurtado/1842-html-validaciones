@@ -4,7 +4,6 @@ export function valida(input) {
         validadores[tipoDeInput](input);
     }
 
-    console.log(input.parentElement);
     if (input.validity.valid) {
         input.parentElement.classList.remove("input-container--invalid");
         input.parentElement.querySelector(".input-message-error").innerHTML = "";
@@ -14,15 +13,12 @@ export function valida(input) {
     }
 }
 
-
 const tipoDeErrores = [
     "valueMissing",
     "typeMismatch",
     "patternMismatch",
     "customError"
 ]
-    
-
 
 const mensajesDeError = {
     nombre: {
@@ -66,8 +62,6 @@ function mostrarMensajeDeError(tipoDeInput, input) {
     let mensaje = "";
     tipoDeErrores.forEach(error => {
         if (input.validity[error]) {
-            console.log(tipoDeInput, error);
-            console.log(mensajesDeError[tipoDeInput][error]);
             mensaje = mensajesDeError[tipoDeInput][error];            
         }
     });
